@@ -14,12 +14,12 @@ export default function ContactSection() {
         <h2 className="font-display text-5xl sm:text-7xl font-black uppercase text-zinc-100 mb-8">
           Let's <span className="text-lime-500 block sm:inline">Connect</span>
         </h2>
-        
+
         <p className="text-xl text-zinc-400 mb-12 max-w-2xl mx-auto">
           Whether you have a project in mind, want to collaborate, or just want to talk code and design—my inbox is open.
         </p>
 
-        <a 
+        <a
           href="mailto:diba.mak@gmail.com"
           className="inline-block bg-lime-500 text-zinc-950 font-black uppercase tracking-widest text-xl px-12 py-5 punk-shadow hover:punk-shadow-hover transition-all duration-300"
         >
@@ -30,8 +30,8 @@ export default function ContactSection() {
       <footer className="mt-40 border-t border-zinc-800 pt-8 text-zinc-600 font-bold uppercase text-sm flex flex-col md:flex-row justify-between items-center gap-4">
         <p>© {new Date().getFullYear()} Diba Makki</p>
         <div className="flex gap-4">
-           {/* Add additional footer links if necessary */}
-          <span>Punk/Brutalist Aesthetic</span>
+          {/* Add additional footer links if necessary */}
+
         </div>
       </footer>
     </section>

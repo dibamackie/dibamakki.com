@@ -9,7 +9,7 @@ const projectCategories = [
     projects: [
       {
         title: 'HeartByte — Campus Health Center Management Platform',
-        description: 'Group-developed web application designed to improve accessibility and usability of campus health center services for students and staff.',
+        description: 'Group-developed web application designed to improve accessibility and usability of campus health center services for Seneca Polytechnic students and staff.',
         tags: ['React', 'Next.js', 'Tailwind', 'Node.js'],
         github: '#',
         demo: 'https://www.heartbyte.site/',

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiMail, FiArrowDown } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiFileText } from 'react-icons/fi';
 
 export default function HeroSection() {
   return (
@@ -21,9 +21,25 @@ export default function HeroSection() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="bg-lime-500 text-zinc-950 font-bold px-6 py-2 uppercase tracking-wide text-sm sm:text-xl punk-shadow mb-12"
+          className="bg-lime-500 text-zinc-950 font-bold px-6 py-2 uppercase tracking-wide text-sm sm:text-xl punk-shadow mb-8"
         >
           Developer • Designer • Builder
+        </motion.div>
+
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="mb-12"
+        >
+          <a
+            href="/resume.pdf"
+            download="Diba_Makki_Resume.pdf"
+            className="group inline-flex items-center gap-3 bg-zinc-900 border-2 border-zinc-100 text-zinc-100 px-6 sm:px-8 py-3 sm:py-4 font-bold uppercase tracking-wider text-xs sm:text-sm transition-all duration-300 hover:bg-zinc-100 hover:text-zinc-950 punk-shadow hover:punk-shadow-hover hover:-translate-y-1"
+          >
+            <FiFileText size={20} className="group-hover:scale-110 transition-transform" />
+            Download Resume
+          </a>
         </motion.div>
 
         <motion.div

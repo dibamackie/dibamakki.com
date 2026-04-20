@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Syne } from 'next/font/google';
 import './globals.css';
+import ChatWidget from '@/components/ChatWidget'; // <-- NEW
 
 const inter = Inter({
   subsets: ['latin'],
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${syne.variable} scroll-smooth dark antialiased`}>
       <body className="min-h-screen bg-[#050505] text-zinc-50 selection:bg-lime-500 selection:text-zinc-950 flex flex-col font-sans overflow-x-hidden">
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
