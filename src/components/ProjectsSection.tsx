@@ -19,7 +19,7 @@ const projectCategories = [
         title: 'Fragments — Cloud-Based Backend Microservice',
         description: 'Backend microservice for authenticated users to create, store, and manage data fragments using secure REST APIs, cloud storage, and containerized deployment.',
         tags: ['Node.js', 'Express', 'AWS Cognito', 'AWS S3', 'Docker', 'GitHub Actions'],
-        github: '#',
+        github: 'https://github.com/dibamackie/Fragments',
         demo: '#',
         accent: 'border-lime-500',
       },
