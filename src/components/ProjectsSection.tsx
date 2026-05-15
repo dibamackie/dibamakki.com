@@ -8,6 +8,14 @@ const projectCategories = [
     category: 'Web Apps',
     projects: [
       {
+        title: 'Circle Management Platform',
+        description: 'Full-stack web application designed to streamline the creation, management, and coordination of educational and community circles within The Fly Bottle. Features an admin portal and a client-facing interface for registrations, automated workflows, and centralized communication.',
+        tags: ['Next.js', 'React', 'MongoDB', 'UploadThing', 'Resend'],
+        github: '#',
+        demo: 'https://app.theflybottle.org/',
+        accent: 'border-emerald-500',
+      },
+      {
         title: 'HeartByte — Campus Health Center Management Platform',
         description: 'Group-developed web application designed to improve accessibility and usability of campus health center services for Seneca Polytechnic students and staff.',
         tags: ['React', 'Next.js', 'Tailwind', 'Node.js'],

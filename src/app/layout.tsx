@@ -27,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${syne.variable} scroll-smooth dark antialiased`}>
-      <body className="min-h-screen bg-[#050505] text-zinc-50 selection:bg-lime-500 selection:text-zinc-950 flex flex-col font-sans overflow-x-hidden">
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${syne.variable} scroll-smooth dark antialiased`}>
+      <body suppressHydrationWarning className="min-h-screen bg-[#050505] text-zinc-50 selection:bg-lime-500 selection:text-zinc-950 flex flex-col font-sans overflow-x-hidden">
         {children}
         <ChatWidget />
         <SpeedInsights />
