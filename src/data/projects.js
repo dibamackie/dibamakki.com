@@ -1,0 +1,48 @@
+export const projects = [
+  {
+    number: '01',
+    title: 'The Berries Pastry Animation Website',
+    eyebrow: 'Animation-based frontend · Featured',
+    description: 'A cinematic pastry website built around an AI-generated hero film. Copy evolves with the scroll, turning a luxury bakery landing page into a tactile story.',
+    stack: ['React', 'GSAP', 'Scroll storytelling', 'AI video'],
+    image: '/images/berries-pastry-cover.png',
+    live: 'https://dulcet-clafoutis-191c6f.netlify.app/',
+    github: null,
+    featured: true,
+  },
+  {
+    number: '02',
+    title: 'Circle Management Platform',
+    eyebrow: 'Community platform',
+    description: 'A full-stack platform for creating, coordinating, and growing educational community circles—with registration flows and an admin workspace.',
+    stack: ['Next.js', 'MongoDB', 'Resend', 'UploadThing'],
+    image: null,
+    live: 'https://app.theflybottle.org/',
+    github: null,
+    color: 'mint',
+  },
+  {
+    number: '03',
+    title: 'HeartByte',
+    eyebrow: 'Campus health platform',
+    description: 'A friendly digital front door for Seneca Polytechnic health services, designed to make care easier to discover and navigate.',
+    stack: ['React', 'Next.js', 'Tailwind', 'Node.js'],
+    image: null,
+    live: 'https://www.heartbyte.site/',
+    github: null,
+    color: 'pink',
+  },
+  {
+    number: '04',
+    title: 'Fragments',
+    eyebrow: 'Cloud microservice',
+    description: 'A secure backend for creating and transforming content fragments, supported by cloud storage, authentication, and containerized delivery.',
+    stack: ['Node.js', 'AWS', 'Docker', 'REST API'],
+    image: null,
+    live: null,
+    github: 'https://github.com/dibamackie/Fragments',
+    color: 'lilac',
+  },
+]
+
+export const skills = ['React', 'Next.js', 'Tailwind CSS', 'Three.js', 'React Three Fiber', 'GSAP', 'Node.js', 'AWS', 'Docker', 'Vercel / Netlify']
