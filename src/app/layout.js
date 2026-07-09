@@ -6,7 +6,7 @@ const sans = DM_Sans({ subsets: ['latin'], variable: '--font-sans', display: 'sw
 const display = Manrope({ subsets: ['latin'], variable: '--font-display', display: 'swap' })
 
 export const metadata = {
-  title: 'Diba Makki — Creative Frontend Developer',
+  title: 'Diba Makki — Creative Full Stack Developer',
   description: 'Creative developer crafting animated, interactive web experiences with React, Next.js, Three.js, and GSAP.',
 }
 

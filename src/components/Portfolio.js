@@ -89,7 +89,7 @@ export default function Portfolio() {
 
       <section className="about section" id="about">
         <div className="about-portrait" data-reveal><Image src="/profile.jpg" alt="Diba Makki" width={900} height={1125}/><div className="portrait-stamp">curious<br/>by nature</div></div>
-        <div className="about-copy" data-reveal><div className="section-label"><span>04</span> About Diba</div><h2>Logic in one hand.<br/><em>Imagination</em> in the other.</h2><p>I’m a creative frontend developer who combines business knowledge, visual storytelling, and technical craft. I like translating ambitious ideas into experiences that feel intuitive, warm, and just unexpected enough.</p><p>When I’m not nudging pixels or animating a flamingo, I’m usually learning a new tool or finding a better question to ask.</p><a className="button button-outline" href="/resume.pdf">Read my résumé <ArrowUpRight size={17}/></a></div>
+        <div className="about-copy" data-reveal><div className="section-label"><span>04</span> About Diba</div><h2>Logic in one hand.<br/><em>Imagination</em> in the other.</h2><p>I’m a creative full stack developer who combines business knowledge, visual storytelling, and technical craft. I like translating ambitious ideas into experiences that feel intuitive, warm, and just unexpected enough.</p><p>When I’m not nudging pixels or animating a flamingo, I’m usually learning a new tool or finding a better question to ask.</p><a className="button button-outline" href="/resume.pdf">Read my résumé <ArrowUpRight size={17}/></a></div>
       </section>
 
       <Contact />
