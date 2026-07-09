@@ -129,15 +129,16 @@ function FlightSound() {
 
     const context = new AudioContext()
     const duration = 10
+    const wingbeatDuration = 1.35
     const sampleRate = context.sampleRate
     const buffer = context.createBuffer(1, duration * sampleRate, sampleRate)
     const channel = buffer.getChannelData(0)
 
     for (let i = 0; i < channel.length; i += 1) {
       const time = i / sampleRate
-      const beat = time % .92
-      const downstroke = Math.exp(-Math.pow((beat - .12) / .11, 2))
-      const upstroke = .32 * Math.exp(-Math.pow((beat - .56) / .15, 2))
+      const beat = time % wingbeatDuration
+      const downstroke = Math.exp(-Math.pow((beat - wingbeatDuration * .13) / (wingbeatDuration * .12), 2))
+      const upstroke = .32 * Math.exp(-Math.pow((beat - wingbeatDuration * .61) / (wingbeatDuration * .16), 2))
       const fade = Math.min(time / .25, (duration - time) / .6, 1)
       channel[i] = (Math.random() * 2 - 1) * (downstroke + upstroke) * .36 * Math.max(0, fade)
     }
