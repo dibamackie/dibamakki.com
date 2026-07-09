@@ -45,4 +45,28 @@ export const projects = [
   },
 ]
 
-export const skills = ['React', 'Next.js', 'Tailwind CSS', 'Three.js', 'React Three Fiber', 'GSAP', 'Node.js', 'AWS', 'Docker', 'Vercel / Netlify']
+export const skills = [
+  'React',
+  'Next.js',
+  'TypeScript',
+  'JavaScript',
+  'HTML',
+  'CSS',
+  'Node.js',
+  'Express.js',
+  'REST APIs',
+  'MongoDB',
+  'PostgreSQL',
+  'Firebase',
+  'Tailwind CSS',
+  'Three.js',
+  'React Three Fiber',
+  'GSAP',
+  'Canva',
+  'Figma',
+  'Blender',
+  'Spline',
+  'AWS',
+  'Docker',
+  'Vercel / Netlify',
+]
