@@ -30,7 +30,6 @@ export default function Portfolio() {
         const ctx = gsap.context(() => {
           gsap.from('.hero-kicker, .hero-title span, .hero-copy, .hero-actions', { y: 42, opacity: 0, duration: 1, stagger: .1, ease: 'power3.out', delay: .25 })
           gsap.utils.toArray('[data-reveal]').forEach((el) => gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 86%' }, y: 65, opacity: 0, duration: .9, ease: 'power3.out' }))
-          gsap.utils.toArray('[data-drift]').forEach((el, i) => gsap.to(el, { scrollTrigger: { trigger: el, scrub: 1.2, start: 'top bottom', end: 'bottom top' }, xPercent: i % 2 ? 12 : -12, ease: 'none' }))
           gsap.utils.toArray('.project-card').forEach((card) => gsap.from(card, { scrollTrigger: { trigger: card, start: 'top 82%' }, y: 80, opacity: 0, rotate: 1.5, duration: 1, ease: 'power3.out' }))
         }, root)
         cleanup = () => ctx.revert()
@@ -72,7 +71,7 @@ export default function Portfolio() {
           <p data-reveal className="story-lead">The web can do more than sit still.</p>
           <div data-reveal className="story-copy"><p>I create responsive digital worlds where brand, interaction, and engineering move as one.</p><p>Every build starts with a human feeling—curiosity, delight, ease—and ends with clean, dependable code.</p></div>
         </div>
-        <div className="marquee" data-drift><span>IDEA</span><i>✦</i><span>DESIGN</span><i>✦</i><span>MOTION</span><i>✦</i><span>CODE</span></div>
+        <DraggableMarquee />
       </section>
 
       <section className="projects section" id="projects">
@@ -171,6 +170,80 @@ function FlightSound() {
     <span>{playing ? 'Flight sound on' : 'Hear it fly'}</span>
     <i><b /><b /><b /></i>
   </button>
+}
+
+function DraggableMarquee() {
+  const marqueeRef = useRef(null)
+  const dragRef = useRef({ dragging: false, startX: 0, startOffset: 0 })
+  const [offset, setOffset] = useState(0)
+  const words = ['IDEA', 'DESIGN', 'MOTION', 'CODE']
+
+  function wrapOffset(nextOffset) {
+    const marquee = marqueeRef.current
+    const group = marquee?.firstElementChild
+    if (!group) return nextOffset
+
+    const gap = parseFloat(getComputedStyle(marquee).columnGap) || 0
+    const loopWidth = group.getBoundingClientRect().width + gap
+    if (!loopWidth) return nextOffset
+
+    let wrappedOffset = nextOffset
+    while (wrappedOffset <= -loopWidth) wrappedOffset += loopWidth
+    while (wrappedOffset > 0) wrappedOffset -= loopWidth
+    return wrappedOffset
+  }
+
+  function startDrag(e) {
+    dragRef.current = { dragging: true, startX: e.clientX, startOffset: offset }
+    e.currentTarget.setPointerCapture(e.pointerId)
+  }
+
+  function drag(e) {
+    if (!dragRef.current.dragging) return
+    const nextOffset = dragRef.current.startOffset + e.clientX - dragRef.current.startX
+    setOffset(wrapOffset(nextOffset))
+  }
+
+  function stopDrag(e) {
+    if (!dragRef.current.dragging) return
+    dragRef.current.dragging = false
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId)
+    }
+  }
+
+  function moveWithKeys(e) {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
+    e.preventDefault()
+    setOffset((currentOffset) => wrapOffset(currentOffset + (e.key === 'ArrowRight' ? 32 : -32)))
+  }
+
+  return (
+    <div
+      ref={marqueeRef}
+      className="marquee"
+      style={{ '--drag-x': `${offset}px` }}
+      onPointerDown={startDrag}
+      onPointerMove={drag}
+      onPointerUp={stopDrag}
+      onPointerCancel={stopDrag}
+      onKeyDown={moveWithKeys}
+      role="slider"
+      aria-label="Drag design, motion, and code words"
+      aria-valuemin={-100}
+      aria-valuemax={100}
+      aria-valuenow={Math.round(offset)}
+      tabIndex={0}
+    >
+      {Array.from({ length: 5 }).map((_, groupIndex) => (
+        <span className="marquee-group" aria-hidden={groupIndex > 0} key={groupIndex}>
+          {words.map((word) => (
+            <span className="marquee-word" key={`${groupIndex}-${word}`}>{word}</span>
+          ))}
+        </span>
+      ))}
+    </div>
+  )
 }
 
 function ProjectCard({ project }) {
