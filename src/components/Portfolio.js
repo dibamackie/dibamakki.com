@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { ArrowDown, ArrowUpRight, Mail, Menu, Volume2, VolumeX, X } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, GripHorizontal, Mail, Menu, Volume2, VolumeX, X } from 'lucide-react'
 import { FiGithub as Github, FiLinkedin as Linkedin } from 'react-icons/fi'
 import { projects, skills } from '@/data/projects'
 
@@ -219,29 +219,32 @@ function DraggableMarquee() {
   }
 
   return (
-    <div
-      ref={marqueeRef}
-      className="marquee"
-      style={{ '--drag-x': `${offset}px` }}
-      onPointerDown={startDrag}
-      onPointerMove={drag}
-      onPointerUp={stopDrag}
-      onPointerCancel={stopDrag}
-      onKeyDown={moveWithKeys}
-      role="slider"
-      aria-label="Drag design, motion, and code words"
-      aria-valuemin={-100}
-      aria-valuemax={100}
-      aria-valuenow={Math.round(offset)}
-      tabIndex={0}
-    >
-      {Array.from({ length: 5 }).map((_, groupIndex) => (
-        <span className="marquee-group" aria-hidden={groupIndex > 0} key={groupIndex}>
-          {words.map((word) => (
-            <span className="marquee-word" key={`${groupIndex}-${word}`}>{word}</span>
-          ))}
-        </span>
-      ))}
+    <div className="marquee-shell">
+      <div
+        ref={marqueeRef}
+        className="marquee"
+        style={{ '--drag-x': `${offset}px` }}
+        onPointerDown={startDrag}
+        onPointerMove={drag}
+        onPointerUp={stopDrag}
+        onPointerCancel={stopDrag}
+        onKeyDown={moveWithKeys}
+        role="slider"
+        aria-label="Drag design, motion, and code words"
+        aria-valuemin={-100}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(offset)}
+        tabIndex={0}
+      >
+        {Array.from({ length: 5 }).map((_, groupIndex) => (
+          <span className="marquee-group" aria-hidden={groupIndex > 0} key={groupIndex}>
+            {words.map((word) => (
+              <span className="marquee-word" key={`${groupIndex}-${word}`}>{word}</span>
+            ))}
+          </span>
+        ))}
+      </div>
+      <span className="marquee-hint" aria-hidden="true"><GripHorizontal size={22} /></span>
     </div>
   )
 }
