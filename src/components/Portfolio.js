@@ -252,11 +252,11 @@ function DraggableMarquee() {
 function ProjectCard({ project }) {
   return <article className={`project-card ${project.featured ? 'featured' : ''}`}>
     <div className={`project-visual ${project.color || ''}`}>
-      {project.image ? <Image src={project.image} alt="Colorful berry pastries in a cinematic studio scene" fill sizes="(max-width: 900px) 100vw, 88vw"/> : <AbstractVisual number={project.number}/>} 
+      {project.image ? <Image src={project.image} alt={project.imageAlt || `${project.title} project preview`} fill sizes={project.featured ? '(max-width: 900px) 100vw, 88vw' : '(max-width: 900px) 100vw, 44vw'}/> : <AbstractVisual number={project.number}/>} 
       <span className="project-number">{project.number}</span>
       <span className="project-pill">{project.eyebrow}</span>
     </div>
-    <div className="project-info"><h3>{project.title}</h3><p>{project.description}</p><div className="project-stack">{project.stack.map(item => <span key={item}>{item}</span>)}</div><div className="project-links">{project.live && <a href={project.live} target="_blank" rel="noreferrer">Live project <ArrowUpRight/></a>}{project.github && <a href={project.github} target="_blank" rel="noreferrer">GitHub <Github/></a>}</div></div>
+    <div className="project-info"><h3>{project.title}</h3><p>{project.description}</p><div className="project-stack">{project.stack.map(item => <span key={item}>{item}</span>)}</div><div className="project-links">{project.live && <a href={project.live} target="_blank" rel="noopener noreferrer">{project.liveLabel || 'Live project'} <ArrowUpRight/></a>}{project.github && <a href={project.github} target="_blank" rel="noopener noreferrer">GitHub <Github/></a>}</div></div>
   </article>
 }
 

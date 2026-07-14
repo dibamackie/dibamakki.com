@@ -23,6 +23,19 @@ export const projects = [
   },
   {
     number: '03',
+    title: 'Where Ideas Begin',
+    eyebrow: 'Interactive 3D Experience',
+    description: 'An interactive 3D experience where light and creative choices gradually transform an empty room. Built with React Three Fiber, Three.js, and GSAP.',
+    stack: ['Next.js', 'React Three Fiber', 'Three.js', 'Drei', 'GSAP', 'GLTF', 'WebGL'],
+    image: '/images/where-ideas-begin-preview.png',
+    imageAlt: 'A warm desk lamp lighting an empty room with wallpaper swatches and a customizable chair.',
+    live: 'https://where-ideas-begin.netlify.app/',
+    liveLabel: 'Live Experience',
+    github: null,
+    color: 'lamp',
+  },
+  {
+    number: '04',
     title: 'HeartByte',
     eyebrow: 'Campus health platform',
     description: 'A friendly digital front door for Seneca Polytechnic health services, designed to make care easier to discover and navigate.',
@@ -33,7 +46,7 @@ export const projects = [
     color: 'pink',
   },
   {
-    number: '04',
+    number: '05',
     title: 'Fragments',
     eyebrow: 'Cloud microservice',
     description: 'A secure backend for creating and transforming content fragments, supported by cloud storage, authentication, and containerized delivery.',
