@@ -12,6 +12,15 @@ function Flamingo() {
   const { actions } = useAnimations(animations, group)
   const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+  // Bigger on wide (landscape) screens; phones and portrait tablets keep the original size.
+  const scale = viewport.aspect >= 1 ? .021 : .015
+  // How far the head sticks out to the right of the bird's position, in scene units. On narrow screens the
+  // bird is placed so the head stays visible and the trailing legs run off the left edge instead.
+  // It is measured from the rendered bird on the first frame: the geometry's own bounding box also
+  // includes every animation frame and overstates it. The head reaches ~100 model units, used until then.
+  const headReach = useRef(100 * scale)
+  const measured = useRef(null)
+
   useEffect(() => {
     const action = Object.values(actions)[0]
     action?.reset().fadeIn(.4).play()
@@ -20,22 +29,31 @@ function Flamingo() {
   }, [actions, scene])
 
   useFrame((state) => {
-    if (!group.current || reduce) return
+    if (!group.current) return
+    if (measured.current !== scale) {
+      const box = new THREE.Box3().setFromObject(group.current, true)
+      if (Number.isFinite(box.max.x)) headReach.current = box.max.x - group.current.position.x
+      measured.current = scale
+    }
+    if (reduce) return
     const t = state.clock.getElapsedTime()
     const introDuration = 3.8
     const intro = Math.min(t / introDuration, 1)
     const cruiseTime = Math.max(t - introDuration, 0)
     const halfWidth = viewport.width / 2
-    const startX = -halfWidth - 1.8
-    const restX = Math.min(halfWidth - 1.15, 1.2)
-    const drift = Math.min(.45, Math.max(.18, viewport.width * .06))
+    const drift = Math.min(.45, Math.max(.12, viewport.width * .06))
+    // Rest far enough from the right edge that the head stays on screen even at the far end of the drift.
+    const restX = Math.min(halfWidth - headReach.current - drift - .15, 1.2)
+    const startX = -halfWidth - headReach.current - .3
     const cruiseX = restX + Math.sin(cruiseTime * .22) * drift
     group.current.position.x = THREE.MathUtils.lerp(startX, cruiseX, easeOut(intro))
-    group.current.position.y = .35 + Math.sin(t * 1.15) * .16
+    // Sit a little lower on wide screens so the bigger wings clear the menu bar on the upstroke.
+    group.current.position.y = (viewport.aspect >= 1 ? .1 : .35) + Math.sin(t * 1.15) * .16
     group.current.rotation.z = Math.sin(t * .75) * .035
   })
 
-  return <group ref={group} position={reduce ? [-1, .3, 0] : [-viewport.width / 2 - 1.8, .4, 0]} rotation={[0, Math.PI / 2, 0]} scale={.015}><primitive object={scene} /></group>
+  const stillX = Math.min(-1, viewport.width / 2 - headReach.current - .1)
+  return <group ref={group} position={reduce ? [stillX, .3, 0] : [-viewport.width / 2 - headReach.current - .3, .4, 0]} rotation={[0, Math.PI / 2, 0]} scale={scale}><primitive object={scene} /></group>
 }
 
 function CameraRig() {
